@@ -14,18 +14,22 @@ class _HomePageState extends State<body_widget> {
 
   Future _getData() async {
     try {
-      final response = await http.get(Uri.parse("https://data.covid19.go.id/public/api/update.json"));
+      final response = await http
+          .get(Uri.parse("https://data.covid19.go.id/public/api/update.json"));
 
       // untuk cek data
       if (response.statusCode == 200) {
-        print(response.body);
+        
         final data = json.decode(response.body);
 
         setState(() {
           tanggal = data['update']['penambahan']['tanggal'];
-          activeCase = data['update']['penambahan']['jumlah_positif'].toString();
-          deathCase = data['update']['penambahan']['jumlah_meninggal'].toString();
+          activeCase =
+              data['update']['penambahan']['jumlah_positif'].toString();
+          deathCase =
+              data['update']['penambahan']['jumlah_meninggal'].toString();
         });
+        print(activeCase);
       }
     } catch (e) {
       print(e);
@@ -47,14 +51,17 @@ class _HomePageState extends State<body_widget> {
       height: _containerBodyHeight,
       width: double.infinity,
       padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-      decoration: BoxDecoration(color: Colors.grey[350], borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(
+          color: Colors.grey[350], borderRadius: BorderRadius.circular(10)),
       child: Column(
         children: [
           Container(
             height: _itemHeight,
             width: double.infinity,
             padding: EdgeInsets.all(17),
-            decoration: BoxDecoration(color: Color.fromARGB(255, 239, 255, 251), borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(
+                color: Color.fromARGB(255, 239, 255, 251),
+                borderRadius: BorderRadius.circular(10)),
             child: Column(
               children: [
                 Align(
@@ -66,14 +73,20 @@ class _HomePageState extends State<body_widget> {
                         children: [
                           Text(
                             "CURRENT STATS  ",
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
                           ),
                           Image.asset("assets/images/polygon.png"),
                         ],
                       ),
                       Text(
                         tanggal,
-                        style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -93,7 +106,10 @@ class _HomePageState extends State<body_widget> {
                         children: [
                           Text(
                             "REPORTED CASES",
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 15),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 15),
                             textAlign: TextAlign.center,
                           ),
                           Image.asset("assets/images/virus.png"),
@@ -106,7 +122,8 @@ class _HomePageState extends State<body_widget> {
                     ),
                     Container(
                       height: double.infinity,
-                      decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black)),
                     ),
                     Container(
                       width: 100,
@@ -116,7 +133,10 @@ class _HomePageState extends State<body_widget> {
                         children: [
                           Text(
                             "REPORTED DEATHS",
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 15),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 15),
                             textAlign: TextAlign.center,
                           ),
                           Image.asset("assets/images/poison.png"),
@@ -139,14 +159,19 @@ class _HomePageState extends State<body_widget> {
             height: _itemHeight,
             width: double.infinity,
             padding: EdgeInsets.all(17),
-            decoration: BoxDecoration(color: Color.fromARGB(255, 239, 255, 251), borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(
+                color: Color.fromARGB(255, 239, 255, 251),
+                borderRadius: BorderRadius.circular(10)),
             child: Column(
               children: [
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     "Corona Virus Measures To Take",
-                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
                   ),
                 ),
                 SizedBox(
@@ -164,7 +189,12 @@ class _HomePageState extends State<body_widget> {
                 Expanded(
                   child: Row(
                     children: [
-                      Container(margin: EdgeInsets.only(left: 15), decoration: BoxDecoration(color: Colors.grey[350], borderRadius: BorderRadius.circular(5)), child: Image.asset("assets/images/facemask.png")),
+                      Container(
+                          margin: EdgeInsets.only(left: 15),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[350],
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Image.asset("assets/images/facemask.png")),
                       SizedBox(
                         width: 25,
                       ),
@@ -173,20 +203,31 @@ class _HomePageState extends State<body_widget> {
                           children: [
                             Expanded(
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     'Wear a facemask',
-                                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
                                   ),
                                   Container(
-                                      padding: EdgeInsets.only(left: 5, right: 5),
+                                      padding:
+                                          EdgeInsets.only(left: 5, right: 5),
                                       height: 30,
-                                      decoration: BoxDecoration(color: Colors.lightBlue[200], borderRadius: BorderRadius.circular(7)),
+                                      decoration: BoxDecoration(
+                                          color: Colors.lightBlue[200],
+                                          borderRadius:
+                                              BorderRadius.circular(7)),
                                       child: Center(
                                         child: Text(
                                           'See more ->',
-                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 12),
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12),
                                         ),
                                       ))
                                 ],
@@ -194,7 +235,8 @@ class _HomePageState extends State<body_widget> {
                             ),
                             Text(
                               "You should always wear a facemask when you are around other people.",
-                              style: TextStyle(color: Colors.black54, fontSize: 14),
+                              style: TextStyle(
+                                  color: Colors.black54, fontSize: 14),
                             )
                           ],
                         ),
