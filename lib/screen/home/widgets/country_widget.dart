@@ -10,7 +10,9 @@ class CountryWidget extends StatefulWidget {
 }
 
 class _CountryWidgetState extends State<CountryWidget> {
-  var _get;
+  String key = 'null';
+  String jKasus = 'null';
+  String jDeath = 'null';
 
   Future _getData() async {
     try {
@@ -21,7 +23,9 @@ class _CountryWidgetState extends State<CountryWidget> {
         final data = json.decode(response.body);
 
         setState(() {
-          _get = data['list_data'];
+          key = data['list_data'][3]['key'];
+          jKasus = data['list_data'][3]['jumlah_kasus'].toString();
+          jDeath = data['list_data'][3]['jumlah_meninggal'].toString();
         });
       }
     } catch (e) {
@@ -65,7 +69,7 @@ class _CountryWidgetState extends State<CountryWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '${_get[3]['key'].toString()}',
+                          key,
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -76,15 +80,11 @@ class _CountryWidgetState extends State<CountryWidget> {
                       ],
                     ),
                     Text(
-                      '- ' +
-                          '${_get[3]['jumlah_kasus'].toString()}' +
-                          " infected cases reported",
+                      '- ' + '$jKasus' + " infected cases reported",
                       style: TextStyle(color: Colors.black87, fontSize: 13),
                     ),
                     Text(
-                      '- ' +
-                          '${_get[3]['jumlah_meninggal'].toString()}' +
-                          " death cases reported",
+                      '- ' + '$jDeath' + " death cases reported",
                       style: TextStyle(color: Colors.black87, fontSize: 13),
                     )
                   ],
