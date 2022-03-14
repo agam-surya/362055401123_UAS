@@ -19,7 +19,6 @@ class _HomePageState extends State<body_widget> {
 
       // untuk cek data
       if (response.statusCode == 200) {
-        
         final data = json.decode(response.body);
 
         setState(() {
@@ -72,7 +71,7 @@ class _HomePageState extends State<body_widget> {
                       Row(
                         children: [
                           Text(
-                            "CURRENT STATS  ",
+                            "CURRENT STATS TODAY",
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,

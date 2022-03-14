@@ -16,9 +16,6 @@ class _CountryWidgetState extends State<CountryWidget> {
     try {
       final response = await http
           .get(Uri.parse("https://data.covid19.go.id/public/api/prov.json"));
-      // return jsonDecode(response.body);
-
-      // untuk cek data
       if (response.statusCode == 200) {
         print(response.body);
         final data = json.decode(response.body);
@@ -34,7 +31,6 @@ class _CountryWidgetState extends State<CountryWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _getData();
   }

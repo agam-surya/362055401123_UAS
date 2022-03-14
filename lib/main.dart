@@ -38,8 +38,8 @@ class _MyAppState extends State<MyApp> {
       drawer: AppDrawer(),
       body: ListView(children: [
         Container(
-          padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
           height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,6 +50,7 @@ class _MyAppState extends State<MyApp> {
                   Title_widget(globalKey: _globalKey),
                   SizedBox(height: 30),
                   body_widget(),
+                  SizedBox(height: 30),
                   CountryWidget(),
                 ],
               )),
