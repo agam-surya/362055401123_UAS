@@ -5,14 +5,18 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class CountryWidget extends StatefulWidget {
+  int index;
+  CountryWidget({required this.index});
   @override
-  _CountryWidgetState createState() => _CountryWidgetState();
+  _CountryWidgetState createState() => _CountryWidgetState(index: index);
 }
 
 class _CountryWidgetState extends State<CountryWidget> {
   String key = 'null';
   String jKasus = 'null';
   String jDeath = 'null';
+  int index;
+  _CountryWidgetState({required this.index});
 
   Future _getData() async {
     try {
@@ -23,9 +27,9 @@ class _CountryWidgetState extends State<CountryWidget> {
         final data = json.decode(response.body);
 
         setState(() {
-          key = data['list_data'][3]['key'];
-          jKasus = data['list_data'][3]['jumlah_kasus'].toString();
-          jDeath = data['list_data'][3]['jumlah_meninggal'].toString();
+          key = data['list_data'][index]['key'];
+          jKasus = data['list_data'][index]['jumlah_kasus'].toString();
+          jDeath = data['list_data'][index]['jumlah_meninggal'].toString();
         });
       }
     } catch (e) {
@@ -43,7 +47,7 @@ class _CountryWidgetState extends State<CountryWidget> {
   Widget build(BuildContext context) {
     return Container(
         height: 150,
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
             color: Color.fromARGB(255, 185, 221, 250),

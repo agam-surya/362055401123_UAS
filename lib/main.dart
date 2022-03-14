@@ -22,11 +22,25 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _selectedNavbar = 0;
   double bNavBarHeight = 70;
+  List<Widget> data = [];
 
   void _changeSelectedNavBar(int index) {
     setState(() {
       _selectedNavbar = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    for (int i = 0; i <= 33; i++) {
+      setState(() {
+        data.add(CountryWidget(index: i));
+        data.add(SizedBox(
+          width: 20,
+        ));
+      });
+    }
   }
 
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
@@ -51,7 +65,27 @@ class _MyAppState extends State<MyApp> {
                   SizedBox(height: 30),
                   body_widget(),
                   SizedBox(height: 30),
-                  CountryWidget(),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+
+                    // child: CountryWidget(index: 1),
+                    // CountryWidget(index: 2),
+                    // CountryWidget(index: 3),
+                    child: Row(
+                      children: data,
+                    ),
+                  )
+                  // CountryWidget()
+                  // SingleChildScrollView(
+                  //   scrollDirection: Axis.horizontal,
+                  //   child: ListView.builder(
+                  //       shrinkWrap: true,
+                  //       scrollDirection: Axis.horizontal,
+                  //       itemCount: 3,
+                  //       itemBuilder: ((context, index) {
+                  //         return CountryWidget(index: index);
+                  //       })),
+                  // )
                 ],
               )),
             ],
