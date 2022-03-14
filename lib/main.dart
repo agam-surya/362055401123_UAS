@@ -67,25 +67,10 @@ class _MyAppState extends State<MyApp> {
                   SizedBox(height: 30),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-
-                    // child: CountryWidget(index: 1),
-                    // CountryWidget(index: 2),
-                    // CountryWidget(index: 3),
                     child: Row(
                       children: data,
                     ),
                   )
-                  // CountryWidget()
-                  // SingleChildScrollView(
-                  //   scrollDirection: Axis.horizontal,
-                  //   child: ListView.builder(
-                  //       shrinkWrap: true,
-                  //       scrollDirection: Axis.horizontal,
-                  //       itemCount: 3,
-                  //       itemBuilder: ((context, index) {
-                  //         return CountryWidget(index: index);
-                  //       })),
-                  // )
                 ],
               )),
             ],
