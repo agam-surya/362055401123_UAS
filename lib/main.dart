@@ -23,10 +23,6 @@ class _MyAppState extends State<MyApp> {
   int _selectedNavbar = 0;
   double bNavBarHeight = 70;
 
-  String activeCases = 'null';
-  String deathCases = 'null';
-  String tanggal = '';
-
   void _changeSelectedNavBar(int index) {
     setState(() {
       _selectedNavbar = index;
@@ -42,7 +38,8 @@ class _MyAppState extends State<MyApp> {
       drawer: AppDrawer(),
       body: ListView(children: [
         Container(
-          height: MediaQuery.of(context).size.height * 1,
+          padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+          height: MediaQuery.of(context).size.height,
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +50,6 @@ class _MyAppState extends State<MyApp> {
                   Title_widget(globalKey: _globalKey),
                   SizedBox(height: 30),
                   body_widget(),
-                  SizedBox(height: 30),
                   CountryWidget(),
                 ],
               )),
