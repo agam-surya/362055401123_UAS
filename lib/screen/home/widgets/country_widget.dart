@@ -47,7 +47,7 @@ class _CountryWidgetState extends State<CountryWidget> {
   Widget build(BuildContext context) {
     return Container(
         height: 150,
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width - 20,
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
             color: Color.fromARGB(255, 185, 221, 250),
